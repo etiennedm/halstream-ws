@@ -12,5 +12,9 @@
     "websockets"
   ],
   "author": "Etienne de Maricourt",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3",
+    "ws": "^6.1.0"
+  }
 }
