@@ -1,0 +1,16 @@
+{
+  "name": "halstream-ws",
+  "version": "1.0.0",
+  "description": "HAL visualization using web technologies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "linuxcnc",
+    "hal",
+    "websockets"
+  ],
+  "author": "Etienne de Maricourt",
+  "license": "MIT"
+}
