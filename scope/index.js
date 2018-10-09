@@ -7,7 +7,7 @@ var halStream = new Subject();
 
 var halStreamData = halStream.pipe(mergeMap(data => data.toString().split('\n')));
 halStreamData.subscribe(data => {
-    console.log(data);
+    // console.log(data);
 });
 
 /* Connect to server */
@@ -15,3 +15,10 @@ var ws = websocket('ws://localhost:8765')
 ws.on('data', (data) => {
     halStream.next(data);
 });
+
+function listPins() {
+    console.log("List pins clicked!");
+    ws.socket.send('list pins');
+}
+
+document.getElementById('listPinsButton').addEventListener('click', listPins);
