@@ -1,7 +1,6 @@
 var http = require('http');
 var express = require('express');
 var websocket = require('websocket-stream');
-const fs = require('fs');
 const { spawn } = require('child_process');
 
 const app = express();
@@ -14,7 +13,6 @@ var wss = websocket.createServer({
 }, handle);
 
 function handle(stream) {
-    console.log("handle stream");
     subprocess = spawn("/home/etienne/dev/linuxcnc/linuxcnc-dev/bin/halsampler", { stdio: ['ignore', 'pipe', 'ignore'] });
     subprocess.stdout.pipe(stream);
 }

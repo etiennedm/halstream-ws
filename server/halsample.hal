@@ -1,0 +1,16 @@
+# components
+loadrt siggen 
+loadrt sampler depth=32768 cfg=fsb 
+loadrt threads name1=test-thread period1=1000000 
+
+# nets
+net sample0 siggen.0.cosine => sampler.0.pin.0
+
+# parameter values
+setp sampler.0.tmax 722124
+setp siggen.0.update.tmax 974812
+setp test-thread.tmax 983268
+
+# realtime thread/function links
+addf siggen.0.update test-thread
+addf sampler.0 test-thread
