@@ -14,7 +14,9 @@
   "author": "Etienne de Maricourt",
   "license": "MIT",
   "dependencies": {
+    "browserify": "^16.2.3",
     "express": "^4.16.3",
+    "websocket-stream": "^5.1.2",
     "ws": "^6.1.0"
   }
 }
