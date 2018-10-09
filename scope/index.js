@@ -1,13 +1,18 @@
 var websocket = require('websocket-stream');
 var d3 = require('d3');
 const { Subject } = require('rxjs');
-const { mergeMap } = require('rxjs/operators');
+const { mergeMap, partition } = require('rxjs/operators');
 
 var halStream = new Subject();
 
-var halStreamData = halStream.pipe(mergeMap(data => data.toString().split('\n')));
+const [serverMessage, halStreamRawData] = halStream.pipe(partition(data => data[0] == 91 || data[0] == 123));
+const halStreamData = halStreamRawData.pipe(mergeMap(data => data.toString().split('\n')));
+
+serverMessage.subscribe(data => {
+    msg = JSON.parse(data);
+});
+
 halStreamData.subscribe(data => {
-    // console.log(data);
 });
 
 /* Connect to server */
